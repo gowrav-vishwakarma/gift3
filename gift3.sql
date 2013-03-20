@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
+-- version 3.4.5deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2013 at 02:35 PM
--- Server version: 5.5.28
--- PHP Version: 5.3.10-1ubuntu3.5
+-- Generation Time: Mar 20, 2013 at 07:33 PM
+-- Server version: 5.1.61
+-- PHP Version: 5.3.6-13ubuntu3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `config`
+--
+
+CREATE TABLE IF NOT EXISTS `config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  `is_forclient` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `gifter`
 --
 
@@ -31,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `gifter` (
   `member_id` int(11) NOT NULL,
   `can_receive` tinyint(4) DEFAULT NULL,
   `became_receiver_on` datetime DEFAULT NULL,
+  `is_participent` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_gifters_member` (`member_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -71,7 +86,14 @@ CREATE TABLE IF NOT EXISTS `member` (
   `mobile_no` varchar(45) DEFAULT NULL,
   `email_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `member`
+--
+
+INSERT INTO `member` (`id`, `name`, `username`, `password`, `bank`, `bank_branch`, `bank_ifsc_code`, `bank_account_number`, `mobile_no`, `email_id`) VALUES
+(1, 'n', 'u', 'u', 'b', 'b', 'i', 'b', '5432', 'b@b.com');
 
 --
 -- Constraints for dumped tables
