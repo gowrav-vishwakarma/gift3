@@ -49,11 +49,11 @@
 
    <!--start intro-->
 
+   <?header?>
    <div id="intro">
    <img src="<?template?>images/banner1.png<?/?>"  alt="baner">
    </div>
    <!--end intro-->
-
    <header class="group_bannner_left">
    <hgroup>
    <h1>We serve fresh ideas</h1>
@@ -62,12 +62,13 @@
    </hgroup>
    <div class="button black"><a href="#">Read more about our fresh ideas</a></div>
    </header>
-
+   <?/header?>
    <!--start holder-->
 
    <div class="holder_content">
 
    <section class="group1">
+      <div><?$welcome?></div>
       <?$Content?>
       <!--
    <h3>Services</h3>

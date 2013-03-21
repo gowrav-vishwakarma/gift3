@@ -8,4 +8,8 @@ class page_member extends Page {
 		$m->addMenuItem('member_history','History');
 		$m->addMenuItem('member_profile','Profile');
 	}
+	function render(){
+		$this->api->template->del('header');
+		parent::render();
+	}
 }

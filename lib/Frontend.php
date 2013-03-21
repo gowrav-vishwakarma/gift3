@@ -44,17 +44,20 @@ class Frontend extends ApiFrontend {
       
         $m=$this->add('Menu',array('current_menu_class'=>'current'),'Menu');  
         $m->addMenuItem('index','Welcome');
-        $m->addMenuItem('registration','Register');
         $m->addMenuItem('member_area','My Account');
-        $m->addMenuItem('logout');
 
         $auth=$this->add('BasicAuth');
-          $auth->setModel('Member','username','password');
-          $auth->allowPage(array('index','registration'));
-          $auth->check()
-            ;
-          
-        //$this->add('H1', null, 'logo')->set("BVMSSS");
+        $auth->setModel('Member','username','password');
+        $auth->allowPage(array('index','registration'));
+        $auth->check();
+
+        if(!$auth->isLoggedIn()){
+            $m->addMenuItem('registration','Register');
+        }
+        if($auth->isLoggedIn()){
+            $this->add('H4', null, 'welcome')->set("Welcome " . $auth->model['username']);
+            $m->addMenuItem('logout');
+        }
         $this->addLayout('UserMenu');
         
     }

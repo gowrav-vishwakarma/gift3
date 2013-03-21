@@ -1,5 +1,8 @@
 <?php
 
+define('MAX_GIFT_ALLOWED_KEY','Max Gift Allowed to Take');
+define('SEND_REQUEST_ON_JOINING_KEY','Send Request On Joining');
+
 $config['atk']['base_path']='./atk4/';
 $config['dsn']='mysql://root:winserver@localhost/gift3';
 
