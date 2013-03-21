@@ -163,8 +163,8 @@ h4 span{
 }
 
 .group1 {
-	float: left;
-	width: 613px;
+	/*float: left;
+	width: 613px;*/
 	position: relative;
 	background:white;
 	padding:15px;
@@ -172,8 +172,8 @@ h4 span{
 }
 	
 .group2 {
-	float: right;
-	width: 277px;
+	/*float: right;
+	width: 277px;*/
 	position: relative;
 	background:white;
 	padding:15px;
@@ -475,7 +475,7 @@ nav ul li.current{
 }
 
 .holder_news {
-	width:274px;
+	width:33%;
 	float:left;
 	border-bottom:1px dotted black;
 	margin-bottom:10px;

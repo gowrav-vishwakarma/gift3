@@ -41,37 +41,18 @@ class Frontend extends ApiFrontend {
 
         // If you wish to restrict actess to your pages, use BasicAuth class
             
-        
-        
-//      $auth=  $this->add('Auth')
-//            
-//              ->allow('nitin','bvmsss')
-//              
-        //     // use check() and allowPage for white-list based auth checking
-        // $auth=$this->add('BasicAuth');
-        //   $auth->setModel('xavoc_acl/ACLUser','username','password');
-        //   $auth->allowPage(array('index'));
-        //   $auth->check()
-        //     ;
-        // This method is executed for ALL the peages you are going to add,
-        // before the page class is loaded. You can put additional checks
-        // or initialize additional elements in here which are common to all
-        // the pages.
-
-        // Menu:
-
-        // If you are using a complex menu, you can re-define
-        // it and place in a separate class
-        
-     // $pp=$this->api->auth->model['master'];
-     // $dd=$this->api->auth->model['data'];
-     // $rr=$this->api->auth->model['reports'];
-     // $usr=$this->api->auth->model['user'];
+      
         $m=$this->add('Menu',array('current_menu_class'=>'current'),'Menu');  
         $m->addMenuItem('index','Welcome');
         $m->addMenuItem('registration','Register');
-        $m->addMenuItem('sales','Sales');
+        $m->addMenuItem('member_area','My Account');
         $m->addMenuItem('logout');
+
+        $auth=$this->add('BasicAuth');
+          $auth->setModel('Member','username','password');
+          $auth->allowPage(array('index','registration'));
+          $auth->check()
+            ;
           
         //$this->add('H1', null, 'logo')->set("BVMSSS");
         $this->addLayout('UserMenu');

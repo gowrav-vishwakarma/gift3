@@ -14,6 +14,10 @@ class Model_Member extends Model_Table{
 		$this->addField('mobile_no')->mandatory("This is a required field");
 		$this->addField('email_id')->mandatory("This is a required field");
 
+		$this->hasMany('Entry','member_id');
+		$this->hasMany('ActiveEntry','member_id');
+
+
 		$this->addHook('beforeSave',$this);
 		$this->addHook('afterSave',$this);
 	}
@@ -37,7 +41,7 @@ class Model_Member extends Model_Table{
 	function afterSave(){
 		if($this->recall('is_new',false)){
 			// Add as New gifter also
-			$gifter=$this->add('Model_Gifter');
+			$gifter=$this->add('Model_Entry');
 			$gifter['member_id'] = $this->id;
 			$gifter->save();
 		}

@@ -69,7 +69,7 @@ class Frontend extends ApiFrontend {
      // $usr=$this->api->auth->model['user'];
         $m=$this->add('Menu',array('current_menu_class'=>'current'),'Menu');  
         $m->addMenuItem('index','Welcome');
-        $m->addMenuItem('registration','Register');
+        $m->addMenuItem('config','Configuration');
         $m->addMenuItem('sales','Sales');
         $m->addMenuItem('logout');
           
