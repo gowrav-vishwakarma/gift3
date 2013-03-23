@@ -11,6 +11,18 @@ $config['url_prefix']='?page=';
 
 $config['logger']['log_dir']='./';
 
+$config['tmail']['transport'] = "PHPMailer";
+$config['tmail']['phpmailer']['from'] = "help3gift@gmail.com";
+$config['tmail']['from'] = "help3gift@gmail.com";
+$config['tmail']['phpmailer']['from_name'] = "3Gift System";
+$config['tmail']['smtp']['host'] = "ssl://smtp.gmail.com";
+$config['tmail']['smtp']['port'] = 465;
+$config['tmail']['phpmailer']['username'] = "help3gift@gmail.com";
+$config['tmail']['phpmailer']['password'] = "helphelphelp3gift";
+$config['tmail']['phpmailer']['reply_to'] = "help3gift@gmail.com";
+$config['tmail']['phpmailer']['reply_to_name'] = "3Gift System";
+
+
 date_default_timezone_set('Asia/Calcutta');
 // echo date('H:i:s', time()); 
 

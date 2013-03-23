@@ -25,18 +25,25 @@ class page_member_area extends page_member {
 		}
 
 		$upper_view->add('H3')->set('Send Gift To');
+		$to_member=$gift_sent->join('member.id','to_id');
+		$to_member->addField('mobile_no');
 		$g=$upper_view->add('Grid');
-		$g->setModel($gift_sent,array('request_date','to','status'));
+		$g->setModel($gift_sent,array('request_date','to','mobile_no','status'));
 		$g->addColumn('Expander','giftSendDetails','Details');
 
-		$this->add('H3')->set('Collect Gift From ');
-		$gift_received=$entry->ref('GiftRequestReceived');
+		if($entry['can_receive']){
+			$this->add('H3')->set('Collect Gift From ');
+			$gift_received=$entry->ref('GiftRequestReceived');
 
-		$grid=$this->add('Grid');
-		$grid->setModel($gift_received,array('from','request_date','image_thumb'));
-		$grid->addFormatter('image_thumb','picture');
+			$grid=$this->add('Grid');
+			$grid->setModel($gift_received,array('from','request_date','image_thumb'));
+			$grid->addFormatter('image_thumb','picture');
 
-		$grid->addColumn('Expander','giftReceivedDetails','Details');
+			$grid->addColumn('Expander','giftReceivedDetails','Details');
+		}else{
+			$this->add('View_Error')->set('Send A gift To some one else first, to get Gifts from Others');
+		}
+
 
 	}
 

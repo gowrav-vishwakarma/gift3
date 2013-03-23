@@ -1,6 +1,6 @@
 <?php
 
-$config['atk']['base_path']='../atk4/';
+$config['atk']['base_path']='./atk4/';
 $config['dsn']='mysql://root:winserver@localhost/gift3';
 
 $config['url_postfix']='';

@@ -48,11 +48,9 @@ class Frontend extends ApiFrontend {
 //              ->allow('nitin','bvmsss')
 //              
         //     // use check() and allowPage for white-list based auth checking
-        // $auth=$this->add('BasicAuth');
-        //   $auth->setModel('xavoc_acl/ACLUser','username','password');
-        //   $auth->allowPage(array('index'));
-        //   $auth->check()
-        //     ;
+        $auth=$this->add('BasicAuth');
+          $auth->setModel('AdminUser','name','password');
+          $auth->check();
         // This method is executed for ALL the peages you are going to add,
         // before the page class is loaded. You can put additional checks
         // or initialize additional elements in here which are common to all
@@ -69,8 +67,8 @@ class Frontend extends ApiFrontend {
      // $usr=$this->api->auth->model['user'];
         $m=$this->add('Menu',array('current_menu_class'=>'current'),'Menu');  
         $m->addMenuItem('index','Welcome');
+        $m->addMenuItem('member','Members');
         $m->addMenuItem('config','Configuration');
-        $m->addMenuItem('sales','Sales');
         $m->addMenuItem('logout');
           
         //$this->add('H1', null, 'logo')->set("BVMSSS");

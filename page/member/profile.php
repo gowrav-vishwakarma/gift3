@@ -3,7 +3,7 @@
 class page_member_profile extends page_member {
 	function init(){
 		parent::init();
-		$this->add('H4')->set('Manage Your Profile Here');
+		$this->add('H4')->set('Change Your Password Here');
 		
 		$form=$this->add('Form');
 		
@@ -11,7 +11,7 @@ class page_member_profile extends page_member {
 			$form->add('View_Info')->set('Information Updated, Logout and Log in Again to use your Updated Values');
 		}
 		
-		$form->setModel($this->api->auth->model);
+		$form->setModel($this->api->auth->model,array('password'));
 		$repass_field=$form->addField('password','re_password');
 		$form->add('Order')->move('re_password','after','password')->now();
 		$form->addSubmit("Update");

@@ -6,7 +6,7 @@ class Model_Entry extends Model_Table {
 		$this->hasOne('Member','member_id');
 		$this->addField('can_receive')->type('boolean')->defaultValue(false);
 		$this->addField('became_receiver_on')->defaultValue(null)->type('date');
-		$this->addField('is_participent')->defaultValue(true);
+		$this->addField('is_participent')->type('boolean')->defaultValue(true);
 		$this->addField('Priority');
 
 		$this->hasMany('GiftSent','from_id');
@@ -16,6 +16,14 @@ class Model_Entry extends Model_Table {
 
 		$this->addExpression('name')->set(function ($m,$q){
 			return $m->refSQL('member_id')->fieldQuery('name');
+		});
+
+		$this->addExpression('sent_count')->set(function($m,$q){
+			return $m->refSQL('GiftSent')->count();
+		});
+
+		$this->addExpression('received_count')->set(function($m,$q){
+			return $m->refSQL('GiftRequestReceived')->count();
 		});
 
 		$this->addHook('beforeSave',$this);
@@ -51,5 +59,9 @@ class Model_Entry extends Model_Table {
 
 	function getNextReceiver(){
 		return 1;
+	}
+
+	function getGiftRequestForAdminIDs(){
+		return "This system is not implimented yet";
 	}
 }

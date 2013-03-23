@@ -43,14 +43,15 @@ class Frontend extends ApiFrontend {
             
       
         $m=$this->add('Menu',array('current_menu_class'=>'current'),'Menu');  
-        $m->addMenuItem('index','Welcome');
+        $m->addMenuItem('index','Home');
         $m->addMenuItem('member_area','My Account');
 
         $auth=$this->add('BasicAuth');
         $auth->setModel('Member','username','password');
-        $auth->allowPage(array('index','registration'));
+        $auth->allowPage(array('index','registration','plan','support'));
         $auth->check();
 
+        $m->addMenuItem('plan','What is 3Gift');
         if(!$auth->isLoggedIn()){
             $m->addMenuItem('registration','Register');
         }
@@ -58,7 +59,16 @@ class Frontend extends ApiFrontend {
             $this->add('H4', null, 'welcome')->set("Welcome " . $auth->model['username']);
             $m->addMenuItem('logout');
         }
+            $m->addMenuItem('support');
         $this->addLayout('UserMenu');
+
+        $conf_visit=$this->add('Model_Config')->loadBy('key','visitors_counter');
+        $conf_start=$this->add('Model_Config')->loadBy('key','visitors_start');
+
+        $conf_visit['value'] = $conf_visit['value'] + rand(1,5);
+        $conf_visit->save();
+
+        $this->add('View',null,'visitors')->set("Visitors: " . ($conf_start['value'] + $conf_visit['value']));
         
     }
     function layout_UserMenu(){

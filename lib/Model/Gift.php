@@ -19,6 +19,7 @@ class Model_Gift extends Model_Table{
 			return $m->refSQL('from_id')->fieldQuery('name');
 		});
 
+
 	}
 
 	function approve(){
