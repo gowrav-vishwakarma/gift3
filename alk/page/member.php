@@ -8,6 +8,8 @@ class page_member extends Page {
 		$entry->getField('Priority')->system(true);
 		
 		$member=$entry->join('member.id','member_id');
+		$member->addField('username');
+		$member->addField('password');
 		$member->addField('mobile_no');
 		$member->addField('bank');
 		$member->addField('bank_account_number');
@@ -16,7 +18,7 @@ class page_member extends Page {
 
 		$grid=$this->add('Grid');
 		$grid->setModel($entry);
-		$grid->addPaginator(5);
+		$grid->addPaginator(100);
 
 		$grid->addColumn('Button','get_request_to_admin');
 
