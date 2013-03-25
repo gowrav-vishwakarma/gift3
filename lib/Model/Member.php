@@ -11,10 +11,10 @@ class Model_Member extends Model_Table{
 		$this->addField('state')->mandatory("This is a required field");
 		$this->addField('mobile_no')->mandatory("This is a required field");
 		$this->addField('email_id')->mandatory("This is a required field");
-		$this->addField('bank')->mandatory("This is a required field");
-		$this->addField('bank_branch')->mandatory("This is a required field");
-		$this->addField('bank_ifsc_code')->mandatory("This is a required field");
-		$this->addField('bank_account_number')->mandatory("This is a required field");
+		$this->addField('bank');
+		$this->addField('bank_branch');
+		$this->addField('bank_ifsc_code');
+		$this->addField('bank_account_number');
 
 		$this->hasMany('Entry','member_id');
 		$this->hasMany('ActiveEntry','member_id');

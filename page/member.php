@@ -7,7 +7,7 @@ class page_member extends Page {
 		$m->addMenuItem('member_area','Home (Current Entry Details)');
 		$m->addMenuItem('member_history','History (All Topups Details)');
 		$m->addMenuItem('member_details','Profile Details');
-		$m->addMenuItem('member_profile','Change Your Password');
+		$m->addMenuItem('member_profile','Update Your Profile');
 	}
 	function render(){
 		$this->api->template->del('header');
