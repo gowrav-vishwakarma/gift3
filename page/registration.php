@@ -25,14 +25,14 @@ class page_registration extends Page {
 		$re_pass_field=$form->addField('password','re_password');
 
 		// $personal_info=$form->add('View_Info')->set('Enter Your Personal and Login Details');
-		$bank_info=$form->add('View_Error')->set('BANK DETAILS CANNOT BE EDITED AFTER WORDS, KINDLY SUBMIT WITH CAUTION');
+		// $bank_info=$form->add('View_Error')->set('BANK DETAILS CANNOT BE EDITED AFTER WORDS, KINDLY SUBMIT WITH CAUTION');
 
 		$form->getElement('email_id')->validateField(
         'filter_var($this->get(), FILTER_VALIDATE_EMAIL)');
 
 		$form->add('Order')
 				->move('re_password','after','password')
-				->move($bank_info,'before','bank')
+				// ->move($bank_info,'before','bank')
 				// ->move($personal_info,'before','name')
 				->now();
 		// $this->api->template->tryDel('aside');
