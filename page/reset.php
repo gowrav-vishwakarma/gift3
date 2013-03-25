@@ -5,15 +5,13 @@ class page_reset extends Page {
 		parent::init();
 
 		
-		$submit_url = "http://xavoc.com";
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $submit_url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			// curl_setopt($ch, CURLOPT_POST, true);
-			// curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($payload));
-			$result = curl_exec($ch);
-			curl_close($ch);
-			$this->add('Text')->set($result);
+		$submit_url = "http://enterprise.smsgupshup.com/GatewayAPI/rest?method=SendMessage&send_to=9783807100&msg=HIThere&msg_type=TEXT&userid=2000059879&auth_scheme=plain&password=ant55&v=1.1&format=text";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $submit_url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$result = curl_exec($ch);
+		curl_close($ch);
+		$this->add('Text')->set($result);
 	}
 
 	function query($q) {

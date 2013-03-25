@@ -90,15 +90,28 @@ class page_registration extends Page {
 
 			// SMS ing
 
-			// $submit_url = "http://google.com";
-			// $ch = curl_init();
-			// curl_setopt($ch, CURLOPT_URL, $submit_url);
-			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			// curl_setopt($ch, CURLOPT_POST, true);
-			// curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($payload));
-			// $result = curl_exec($ch);
-			// curl_close($ch);
+			if(strlen($form->get('mobile_no'))>=10){
+				$welcome_msg="Welcome to 3Gift, Your username is ". $form->get('username'). " and password is ". $form->get('password') . " :: 3gift.biz";
+				$entry_msg="Welcome to 3Gift, Your username is ". $form->get('username'). " and password is ". $form->get('password') . " Kindly update your bank details :: 3gift.biz";
 
+				if($form->get('bank_account_number')=='')
+					$msg=$$entry_msg;
+				else
+					$msg=$welcome_msg;
+
+				$msg=urlencode($msg);
+				$no=$form->get('mobile_no');
+
+				$submit_url = "http://enterprise.smsgupshup.com/GatewayAPI/rest?method=SendMessage&send_to=$no&msg=$msg&msg_type=TEXT&userid=2000059879&auth_scheme=plain&password=ant55&v=1.1&format=text";
+				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_URL, $submit_url);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+				$result = curl_exec($ch);
+				curl_close($ch);
+	
+			}
+
+			
 			$form->js()->reload(array('new_username'=>$form->model['username']))->execute();
 		}
 
